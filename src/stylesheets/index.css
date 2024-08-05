@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.content--container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.sec-form {
+  grid-column: 1 / 2;
+}
+.general {
+  grid-row: 1 / 2
+}
+.education {
+  grid-row: 2 / 3;
+}
+.experience {
+  grid-row: 3 / 4;
+}
+
+.cv {
+  grid-column: 2 / 3;
+  grid-row: 1 / 4
+}

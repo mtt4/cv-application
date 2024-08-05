@@ -18,7 +18,7 @@ body {
   border-radius: 11px;
   margin: 20px;
 
-  gap: 11px;
+  gap: 20px;
 }
 .sec-form {
   grid-column: 1;
@@ -55,6 +55,8 @@ body {
   display: inline;
   vertical-align: center;
   font-size: 1.5rem;
+
+  text-decoration: underline;
 }
 .section-header {
   display: flex;
@@ -64,6 +66,7 @@ body {
 
 .cv--general {
   background-color: steelblue;
+  min-height: 25%;
   color: white;
   padding: 20px 20px 50px 20px;
   text-align: center;

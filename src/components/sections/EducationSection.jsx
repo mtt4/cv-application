@@ -1,4 +1,4 @@
-function EducationSection() {
+function EducationSection({handleChange, data}) {
   return (
     <section className="sec-form education">
       <div className="cv-inputs">
@@ -6,9 +6,30 @@ function EducationSection() {
           <span className="icono-book"></span>
           <h3>Education</h3>
         </div>
-        <input type="text" name="institution" id="institution-input" placeholder="Institution" />
-        <input type="text" name="study" id="study-input" placeholder="Field of Study" />
-        <input type="text" name="degree" id="degree-input" placeholder="Degree" />
+        <input
+          type="text"
+          name="institution"
+          id="institution-input"
+          placeholder="Institution"
+          onChange={handleChange}
+          value={data.institution}
+        />
+        <input
+          type="text"
+          name="field"
+          id="field-input"
+          placeholder="Field of Study"
+          onChange={handleChange}
+          value={data.field}
+        />
+        <input
+          type="text"
+          name="degree"
+          id="degree-input"
+          placeholder="Degree"
+          onChange={handleChange}
+          value={data.degree}
+        />
       </div>
     </section>
   )

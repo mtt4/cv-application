@@ -1,4 +1,28 @@
-function ExperienceSection({handleChange, data}) {
+import { useState } from "react";
+
+function ExperienceSection({handleSubmit}) {
+
+  const [expData, setExpData] = useState(
+    {
+      workplace: "",
+      position: "",
+    }
+  )
+
+  function handleExperienceChange(event) {
+    const { name, value } = event.target;
+    setExpData(prevExpData => (
+      {
+        ...prevExpData,
+        [name]: value
+      }
+    ))
+  }
+
+  const submitExperience = () => {
+    handleSubmit(expData.workplace, expData.position);
+  }
+
   return (
     <section className="sec-form experience">
       <div className="cv-inputs">
@@ -10,19 +34,26 @@ function ExperienceSection({handleChange, data}) {
           type="text" 
           name="workplace" 
           id="workplace-input" 
-          placeholder="Workplace" 
-          onChange={handleChange}
-          value={data.workplace}
+          placeholder="Workplace"
+          onChange={handleExperienceChange}
+          value={expData.workplace}
         />
         <input
           type="text"
           name="position"
           id="position-input"
           placeholder="Role"
-          onChange={handleChange}
-          value={data.position}
+          onChange={handleExperienceChange}
+          value={expData.position}
         />
       </div>
+
+      <button
+        className="submit--btn"
+        onClick={submitExperience}
+      >
+        Submit <small>(this cannot be undone)</small>
+      </button>
     </section>
   )
 }

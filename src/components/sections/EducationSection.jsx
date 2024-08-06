@@ -1,4 +1,29 @@
-function EducationSection({handleChange, data}) {
+import { useState } from "react";
+
+function EducationSection({handleSubmit}) {
+
+  const [eduData, setEduData] = useState(
+    {
+      institution: "",
+      field: "",
+      degree: "",
+    }
+  )
+
+  function handleEducationChange(event) {
+    const { name, value } = event.target;
+    setEduData(prevEduData => (
+      {
+        ...prevEduData,
+        [name]: value
+      }
+    ))
+  }
+
+  const submitEducation = () => {
+    handleSubmit(eduData.institution, eduData.field, eduData.degree);
+  }
+
   return (
     <section className="sec-form education">
       <div className="cv-inputs">
@@ -11,26 +36,33 @@ function EducationSection({handleChange, data}) {
           name="institution"
           id="institution-input"
           placeholder="Institution"
-          onChange={handleChange}
-          value={data.institution}
+          onChange={handleEducationChange}
+          value={eduData.institution}
         />
         <input
           type="text"
           name="field"
           id="field-input"
           placeholder="Field of Study"
-          onChange={handleChange}
-          value={data.field}
+          onChange={handleEducationChange}
+          value={eduData.field}
         />
         <input
           type="text"
           name="degree"
           id="degree-input"
           placeholder="Degree"
-          onChange={handleChange}
-          value={data.degree}
+          onChange={handleEducationChange}
+          value={eduData.degree}
         />
       </div>
+
+      <button 
+        className="submit--btn"
+        onClick={submitEducation}
+      >
+        Submit <small>(this cannot be undone)</small>
+      </button>
     </section>
   )
 }

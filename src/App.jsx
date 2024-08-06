@@ -10,11 +10,14 @@ function App() {
       name: "",
       email: "",
       phone: "",
-      institution: "",
-      field: "",
-      degree: "",
-      workplace: "",
-      position: "",
+      education: [
+      ],
+      experience: [
+        {
+          workplace: "",
+          position: "",
+        }
+      ]
     },
   );
 
@@ -27,6 +30,31 @@ function App() {
       }
     ))
   }
+
+  function submitEducation(institution, field, degree) {
+    setCvData(prevData => {
+      return {
+        ...prevData,
+        education: [
+          ...prevData.education,
+          {institution, field, degree}
+        ]
+      }
+    })
+  }
+
+  function submitExperience(workplace, position) {
+    setCvData(prevData => {
+      return {
+        ...prevData,
+        experience: [
+          ...prevData.experience,
+          {workplace, position}
+        ]
+      }
+    })
+  }
+
   return (
     <main className="content--container">
       <GeneralSection 
@@ -34,12 +62,10 @@ function App() {
         data={{...cvData.name, ...cvData.email, ...cvData.phone}}
       />
       <EducationSection
-        handleChange={handleChange}
-        data={{...cvData.institution, ...cvData.field, ...cvData.degree}}
+        handleSubmit={submitEducation}
       />
       <ExperienceSection 
-        handleChange={handleChange}
-        data={{...cvData.workplace, ...cvData.position}}
+        handleSubmit={submitExperience}
       />
       
       <Curriculum {...cvData} />
